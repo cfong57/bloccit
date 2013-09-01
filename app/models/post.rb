@@ -1,7 +1,9 @@
 class Post < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   belongs_to :user
-  attr_accessible :body, :title
+  belongs_to :topic
+  attr_accessible :body, :title, :topic
+
 
   default_scope order('created_at DESC')
 end
