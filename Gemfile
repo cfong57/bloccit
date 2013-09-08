@@ -30,6 +30,8 @@ gem 'devise'
 
 gem 'cancan'
 
+gem 'redcarpet'
+
 # for possible future improvements
 # gem 'simple_form'
 
