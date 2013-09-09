@@ -28,7 +28,7 @@ gem 'jquery-rails'
 gem 'faker'
 
 # security
-gem 'devise'
+gem 'devise', '~> 3.0.0'
 gem 'figaro'
 
 # permissions
