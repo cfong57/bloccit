@@ -34,4 +34,8 @@ Bloccit::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # possible fix for not being able to find imgmagick commands?
+  ENV['PATH'] = "Program Files:#{ENV['PATH']}"
+
 end

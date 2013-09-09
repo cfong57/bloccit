@@ -1,0 +1,10 @@
+AWS_ACCESS_KEY_ID: AKIAJNOZHEI7WW5WBODA
+AWS_SECRET_ACCESS_KEY: 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
+
+development:
+  SENDGRID_USERNAME: "app17678668@heroku.com"
+  SENDGRID_PASSWORD: "tg0vso2q"
+  AWS_BUCKET: tetris-bloccit-development
+
+production:
+  AWS_BUCKET: tetris-bloccit-production

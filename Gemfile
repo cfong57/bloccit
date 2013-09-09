@@ -24,13 +24,23 @@ end
 
 gem 'jquery-rails'
 
+# seeding
 gem 'faker'
 
+# security
 gem 'devise'
+gem 'figaro'
 
+# permissions
 gem 'cancan'
 
+# markdown
 gem 'redcarpet'
+
+# stuff for uploading images
+gem 'carrierwave'
+gem 'mini_magick', '~> 3.5.0'
+gem 'fog'
 
 # for possible future improvements
 # gem 'simple_form'
