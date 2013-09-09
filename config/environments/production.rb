@@ -67,8 +67,5 @@ Bloccit::Application.configure do
 
   # http://bloccit.herokuapp.com
   config.action_mailer.default_url_options = { :host => 'tetris-bloccit.herokuapp.com' }
-
-  # possible fix for not being able to find imgmagick commands?
-  ENV['PATH'] = "Program Files:#{ENV['PATH']}"
   
 end

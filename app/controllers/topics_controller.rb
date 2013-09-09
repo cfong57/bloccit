@@ -19,7 +19,8 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = current_user.topics.build(params[:topic])
+    @topic = Topic.new(params[:topic])
+    #@topic = current_user.topics.build(params[:topic]) ???
     authorize! :create, @topic, message: "You need to be an admin to do that."
     if @topic.save
       redirect_to @topic, notice: "Topic was saved successfully."
