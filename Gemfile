@@ -42,6 +42,9 @@ gem 'carrierwave'
 gem 'mini_magick', '~> 3.5.0'
 gem 'fog'
 
+# pagination
+gem 'will_paginate', '~> 3.0'
+
 # for possible future improvements
 # gem 'simple_form'
 

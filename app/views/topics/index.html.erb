@@ -6,15 +6,16 @@
       <div class="media">
         <div class="media-body">
           <h4 class="media-heading">
-            <%= link_to topic.name, topic %>
+            <%= link_to (markdown topic.name), topic %>
           </h4>
           <small>
-            <%= topic.description %>
+            <%= markdown topic.description %>
           </small>
         </div>
       </div>
     <% end %>
   </div>
+  <%= will_paginate @topics %>
   <div class="span4">
     <% if can? :create, Topic %>
       <%= link_to "New Topic", new_topic_path, class: 'btn btn-large btn-block' %>

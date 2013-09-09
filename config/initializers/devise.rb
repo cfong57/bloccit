@@ -254,6 +254,6 @@ Devise.setup do |config|
   # rake aborted!
   # Devise.secret_key was not set. Please add the following to your Devise initializer:
   
-  config.secret_key = '80c396ed8faa7bf2958e633d5f0f6cd680bcc041d788718acb188869e8be9f32de75049d88aa34baae0050004a26b5c8b31d632285641857e9e6391d78124b5c'
+  #config.secret_key = '80c396ed8faa7bf2958e633d5f0f6cd680bcc041d788718acb188869e8be9f32de75049d88aa34baae0050004a26b5c8b31d632285641857e9e6391d78124b5c'
 
 end
