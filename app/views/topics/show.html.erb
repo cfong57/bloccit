@@ -12,6 +12,7 @@
     <%= image_tag(@topic.image.thumb.url) if @topic.image? %>
     submitted <%= time_ago_in_words(@topic.created_at) %> ago
   </div>
+  <div class="row span8"><h4>Many posts, now handle it</h4></div>
   <%= render partial: "post", collection: @posts, locals: { topic: @topic, post: @post, comment: @comment } %>
   <%= will_paginate @posts %>
   <div class="span4">

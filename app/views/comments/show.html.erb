@@ -1,5 +1,7 @@
 <%= link_to("Back to post", "/topics/#{@topic.id}/posts/#{@post.id}", class: 'btn btn-primary btn-mini') %>
 
+<%= markdown "\##{@comment.id}" %>
+
 <div class="row">
   <div class="span8">
     <small>
