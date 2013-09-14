@@ -10,10 +10,10 @@ u = User.new(
 u.skip_confirmation!
 u.save
 u.update_attribute(:role, 'admin')
+"Welcome to SAO!"
 %>
 
-<p>Random Beater Account generated.</p>
-<p>Int: <%= int %> </p>
+<p>Random Beater Account #<%= int %> generated.</p>
 <p>Password: You know why I named it that. It doesn't mean anything.</p>
 
 <div class="span4">
