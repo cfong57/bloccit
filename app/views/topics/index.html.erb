@@ -9,6 +9,8 @@
             <%= link_to (markdown topic.name), topic %>
           </h4>
           <small>
+            <%= image_tag(topic.image.thumb.url) if topic.image? %>         
+            submitted <%= time_ago_in_words(topic.created_at) %> ago
             <%= markdown topic.description %>
             <%= topic.posts.count %> Posts
           </small>
