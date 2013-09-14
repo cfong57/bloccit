@@ -12,17 +12,17 @@
     <%= image_tag(@topic.image.thumb.url) if @topic.image? %>
     submitted <%= time_ago_in_words(@topic.created_at) %> ago
   </div>
-  <div class="row span8"><h4>Many posts, now handle it</h4></div>
-  <%= render partial: "post", collection: @posts, locals: { topic: @topic, post: @post, comment: @comment } %>
-  <%= will_paginate @posts %>
   <div class="span4">
     <% if can? :create, Post %>
       <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-large btn-block' %>
     <% end %>
     <% if can? :destroy, @topic %>
-      <%= link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-large btn-block btn-danger',
+      <%= link_to "Delete Topic", [@topic], method: :delete, class: 'btn btn-large btn-block btn-danger',
       confirm: 'Are you sure you want to delete this topic?' %> 
     <% end %>
   </div>
+  <div class="row span8"><h4>Many posts, now handle it</h4></div>
+  <%= render partial: "post", collection: @posts, locals: { topic: @topic, post: @post, comment: @comment } %>
+  <%= will_paginate @posts %>
 
 </div>
