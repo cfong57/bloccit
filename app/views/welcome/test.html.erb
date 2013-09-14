@@ -1,19 +1,29 @@
 <h1>Generate Beater Account</h1>
 
 <%=
-int = rand(0..1000)
-u = User.new(
-  name: "Kirito#{int}",
-  email: "kirito#{int}@sao.com", 
-  password: "steins;gate#{int}", 
-  password_confirmation: "steins;gate#{int}")
-u.skip_confirmation!
-u.save
-u.update_attribute(:role, 'admin')
-"Welcome to SAO!"
+users = User.all
+beater = nil
+users.each do |user|
+   beater = user if user.name =~ /Kirito/
+end
+if(!beater.nil?)
+  int = beater.name.gsub("Kirito","").to_i
+else
+  int = rand(0..1000)
+  u = User.new(
+    name: "Kirito#{int}",
+    email: "kirito#{int}@sao.com", 
+    password: "steins;gate#{int}", 
+    password_confirmation: "steins;gate#{int}")
+  u.skip_confirmation!
+  u.save
+  u.update_attribute(:role, 'admin')
+end
+"\n"
 %>
 
-<p>Random Beater Account #<%= int %> generated.</p>
+<p>Welcome to SAO!</p>
+<p>Beater Account #<%= int %> activated.</p>
 <p>Password: You know why I named it that. It doesn't mean anything.</p>
 
 <div class="span4">
