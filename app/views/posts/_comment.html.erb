@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="span8">
+    <h4 class="media-heading">
+      <%= link_to (markdown comment.id.to_s), [@topic, @post, comment] %>
+    </h4>
+    <small>
+      <%= image_tag(comment.image.thumb.url) if comment.image? %>
+      <%= image_tag(comment.user.avatar.tiny.url) if comment.user.avatar? %>
+      submitted <%= time_ago_in_words(comment.created_at) %> ago by 
+      <%= comment.user.name %>
+    </small>  
+    <p><%= markdown comment.body %></p>
+  </div>
+  <div class="span4">
+    <% if can? :edit, @comment %>
+      <%= link_to "Edit comment", edit_topic_post_comment_path(@topic,@post,comment), class: 'btn btn-primary btn-mini' %>
+    <% end %>
+  </div>
+</div>

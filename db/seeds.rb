@@ -1,6 +1,6 @@
 require 'faker'
 
-# Create 15 topics
+# Create 25 topics
 topics = []
 25.times do
   topics << Topic.create(
@@ -9,6 +9,7 @@ topics = []
   )
 end
 
+#Create some users
 (15 + rand(4..10)).times do
   password = Faker::Lorem.characters(10)
   u = User.new(
@@ -18,7 +19,8 @@ end
     password_confirmation: password)
   u.skip_confirmation!
   u.save
-
+  
+  #Create some posts
   (15 + rand(5..12)).times do
     topic = topics.first # getting the first topic here
     p = u.posts.create(
@@ -29,9 +31,12 @@ end
     p.update_attribute(:created_at, Time.now - rand(600..31536000))
 
     topics.rotate! # add this line to move the first topic to the last, so that posts get assigned to different topics.
-
+    
+    #Create some comments
     (15 + rand(3..7)).times do
-      p.comments.create(body: Faker::Lorem.paragraphs(rand(1..2)).join("\n"))
+      c = u.comments.create(body: Faker::Lorem.paragraphs(rand(1..2)).join("\n"))
+      c.update_attribute(:created_at, Time.now - rand(600..31536000))
+      c.update_attribute(:post_id, p.id)
     end
   end
 end

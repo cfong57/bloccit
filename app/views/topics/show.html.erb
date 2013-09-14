@@ -1,3 +1,5 @@
+<%= link_to("Back to topic index", "/topics", class: 'btn btn-primary btn-mini') %>
+
 <h1><%= markdown @topic.name %></h1>
 
 <% if can? :update, @topic %>
@@ -7,23 +9,10 @@
 <div class="row">
   <div class="span8">
     <p class="lead"><%= markdown @topic.description %></p>
-    <% @posts.each do |post| %>
-      <div class="media">
-        <div class="media-body">
-          <h4 class="media-heading">
-            <%= link_to (markdown post.title), [@topic, post] %>
-          </h4>
-          <small>
-            <%= image_tag(post.image.thumb.url) if post.image? %>
-            <%= image_tag(post.user.avatar.tiny.url) if post.user.avatar? %>
-            submitted <%= time_ago_in_words(post.created_at) %> ago by 
-            <%= post.user.name %><br/>
-            <%= post.comments.count %> Comments
-          </small>
-        </div>
-      </div>
-    <% end %>
+    <%= image_tag(@topic.image.thumb.url) if @topic.image? %>
+    submitted <%= time_ago_in_words(@topic.created_at) %> ago
   </div>
+  <%= render partial: "post", collection: @posts, locals: { topic: @topic, post: @post, comment: @comment } %>
   <%= will_paginate @posts %>
   <div class="span4">
     <% if can? :create, Post %>

@@ -1,8 +1,8 @@
-<h1>Edit Topic</h1>
+<h1>Edit Comment</h1>
 
 <div class="row">
-  <div class="span-6">
-    <p>Guidelines for new topic:</p>
+  <div class="span4">
+    <p>Guidelines for new comments:</p>
     <ul>
       <li>Make sure content is appropriate.</li>
       <li>Blah blah blah</li>
@@ -11,6 +11,6 @@
     </ul>
   </div>
   <div class="span8">
-    <%= render partial: 'form', locals: { topic: @topic } %>
+    <%= render partial: 'form', locals: { topic: @topic, post: @post, comment: @comment } %>
   </div>
 </div>
