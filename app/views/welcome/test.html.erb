@@ -1,0 +1,21 @@
+<h1>Generate Beater Account</h1>
+
+<%=
+int = rand(0..1000)
+u = User.new(
+  name: "Kirito#{int}",
+  email: "kirito#{int}@sao.com", 
+  password: "steins;gate#{int}", 
+  password_confirmation: "steins;gate#{int}")
+u.skip_confirmation!
+u.save
+u.update_attribute(:role, 'admin')
+%>
+
+<p>Random Beater Account generated.</p>
+<p>Int: <%= int %> </p>
+<p>Password: You know why I named it that. It doesn't mean anything.</p>
+
+<div class="span4">
+  <%= link_to("Go to topics", "/topics", class: 'btn btn-primary btn-mini') %>
+</div>
