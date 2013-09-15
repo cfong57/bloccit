@@ -5,9 +5,13 @@ Bloccit::Application.routes.draw do
   resources :topics do
     resources :posts, except: [:index] do
       resources :comments
+      match '/up-vote', to: 'votes#up_vote', as: :up_vote
+      match '/down-vote', to: 'votes#down_vote', as: :down_vote
     end
   end
-  #only: [:create]
+  #only: [:create, :destroy]
+
+  
 
   match "about" => 'welcome#about', via: :get
   match "test" => 'welcome#test', via: :get

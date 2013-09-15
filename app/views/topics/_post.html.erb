@@ -1,6 +1,7 @@
 <div class="row">
   <div class="span8">
     <h4 class="media-heading">
+      <%= render partial: 'votes/voter', locals: { topic: @topic, post: post } %>
       <%= link_to (markdown post.title), [@topic, post] %>
     </h4>
     <small>
