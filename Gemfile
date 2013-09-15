@@ -45,6 +45,10 @@ gem 'fog'
 # pagination
 gem 'will_paginate', '~> 3.0'
 
+# universal authorization
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 # for possible future improvements
 # gem 'simple_form'
 

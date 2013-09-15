@@ -5,6 +5,10 @@ development:
   SENDGRID_USERNAME: "app17678668@heroku.com"
   SENDGRID_PASSWORD: "tg0vso2q"
   AWS_BUCKET: tetris-bloccit-dev
+  FACEBOOK_ID: 1415524742004250
+  FACEBOOK_SECRET: da80d82547a1c8dbc89eeb0c85a7b000
 
 production:
   AWS_BUCKET: tetris-bloccit-pro
+  FACEBOOK_ID: 1416963735190151
+  FACEBOOK_SECRET: c9961825847a8c440e9b8ac08fae8fdd
