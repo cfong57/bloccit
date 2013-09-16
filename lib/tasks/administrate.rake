@@ -1,5 +1,5 @@
 namespace :db do
-  task :init_admin
+  task :init_admin do
     users = User.all
     beater = nil
     users.each do |user|
