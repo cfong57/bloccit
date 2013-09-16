@@ -1,11 +1,7 @@
 namespace :db do
-  task :init_admin do
-    users = User.all
-    beater = nil
-    users.each do |user|
-      beater = user if user.name =~ /Kirito/
-    end
-    if(!(beater.nil?))
+  task :init_admin => :environment do
+    beater = User.where('name LIKE ?', "%Kirito%").first
+    if(beater.nil?)
       u = User.new(
       name: "Kirito",
       email: "kirito@sao.com", 
@@ -14,6 +10,12 @@ namespace :db do
       u.skip_confirmation!
       u.save
       u.update_attribute(:role, 'admin')
-    end
+      puts "Created Kirito."
+    else
+      beater.update_attribute(:email, 'kirito@sao.com')
+      beater.update_attribute(:password, 'hayaku')
+      beater.update_attribute(:role, 'admin')
+      puts "Kirito already exists!"
+   end
   end
 end
