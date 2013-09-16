@@ -1,30 +1,8 @@
 <h1>Generate Beater Account</h1>
 
-<%=
-users = User.all
-beater = nil
-users.each do |user|
-   beater = user if user.name =~ /Kirito/
-end
-if(!beater.nil?)
-  int = beater.name.gsub("Kirito","").to_i
-else
-  int = rand(0..1000)
-  u = User.new(
-    name: "Kirito#{int}",
-    email: "kirito#{int}@sao.com", 
-    password: "steins;gate#{int}", 
-    password_confirmation: "steins;gate#{int}")
-  u.skip_confirmation!
-  u.save
-  u.update_attribute(:role, 'admin')
-end
-"\n"
-%>
-
 <p>Welcome to SAO!</p>
-<p>Beater Account #<%= int %> activated.</p>
-<p>Password: You know why I named it that. It doesn't mean anything.</p>
+<p>The server is currently unavailable due to Kirito being a badass.</p>
+<p>We suggest playing Darker than Russian Girls Online in the meantime!</p>
 
 <div class="span4">
   <%= link_to("Go to topics", "/topics", class: 'btn btn-primary btn-mini') %>
