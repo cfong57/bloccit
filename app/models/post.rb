@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
   attr_accessible :body, :title, :topic, :image
 
   after_create :create_vote
-  after_create :send_favorite_emails
+  #after_create :send_favorite_emails
 
   mount_uploader :image, ImageUploader
 
@@ -55,10 +55,10 @@ class Post < ActiveRecord::Base
     user.votes.create(value: 1, post: self)
   end  
 
-  def send_favorite_emails
-    self.topic.favorites.each do |favorite|
-      #do not notify users when they themsevles post on topic they've favorited, because that's just silly
-      FavoriteMailer.new_post(favorite.user, self.topic, self).deliver unless favorite.user == self.user
-    end
-  end
+  #def send_favorite_emails
+  #  self.topic.favorites.each do |favorite|
+  #    #do not notify users when they themsevles post on topic they've favorited, because that's just silly
+  #    FavoriteMailer.new_post(favorite.user, self.topic, self).deliver unless favorite.user == self.user
+  #  end
+  #end
 end
