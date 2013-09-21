@@ -18,4 +18,5 @@
       <%= link_to "Edit post", edit_topic_post_path(@topic,post), class: 'btn btn-primary btn-mini' %>
     <% end %>
   </div>
+  <%= render partial: 'favorites/favorite', locals: { topic: @topic, post: post } %>
 </div>

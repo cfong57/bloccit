@@ -7,11 +7,11 @@ Bloccit::Application.routes.draw do
       resources :comments
       match '/up-vote', to: 'votes#up_vote', as: :up_vote
       match '/down-vote', to: 'votes#down_vote', as: :down_vote
+      resources :favorites, only: [:create, :destroy]
     end
   end
-  #only: [:create, :destroy]
-
   
+  #controller: 'topics/posts'  <- don't need this until later
 
   match "about" => 'welcome#about', via: :get
   match "test" => 'welcome#test', via: :get

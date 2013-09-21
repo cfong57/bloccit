@@ -4,15 +4,20 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user
 
-    # if a member, they can manage their own posts 
-    # (or create new ones)
+    # Members can create posts and comments freely
+    # but only edit/delete their own
     if user.role? :member
-      can :manage, Post, :user_id => user.id
-      can :manage, Comment, :user_id => user.id
+      can :create, Post
+      can :update, Post, :user_id => user.id
+      can :destroy, Post, :user_id => user.id
+      can :create, Comment
+      can :update, Comment, :user_id => user.id
+      can :destroy, Comment, :user_id => user.id
       can :create, Vote
+      can :manage, Favorite, :user_id => user.id
     end
 
-    # Moderators can delete any post
+    # Moderators can delete any post or comment
     if user.role? :moderator
       can :destroy, Post
       can :destroy, Comment
