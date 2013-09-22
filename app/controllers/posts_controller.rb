@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
 
   def show
-    @post = Post.find(params[:id])
     @topic = Topic.find(params[:topic_id])
-    @comments = @post.comments.paginate(page: params[:page], per_page: 10)
+    authorize! :read, @topic, message: "You need to be signed-in to do that."
+    @post = Post.find(params[:id])
+    @comments = @post.comments  #.paginate(page: params[:page], per_page: 10)
     @comment = Comment.new
   end
 
