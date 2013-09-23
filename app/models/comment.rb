@@ -17,7 +17,9 @@ class Comment < ActiveRecord::Base
   def send_favorite_emails
     self.post.favorites.each do |favorite|
       #do not notify users when they themsevles comment on post they've favorited, because that's just silly
-      FavoriteMailer.new_comment(favorite.user, self.post, self).deliver unless favorite.user == self.user
+      if favorite.user_id != self.user_id && favorite.user.email_favorites?
+        FavoriteMailer.new_comment(favorite.user, self.post, self).deliver
+      end
     end
   end
 end
