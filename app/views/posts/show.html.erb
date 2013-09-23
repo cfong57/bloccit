@@ -37,5 +37,5 @@
     <% end %>
   </div>
   <div class="row span8"><h4>Many comments, now handle it</h4></div>
-  <%= render partial: "comment", collection: @comments, locals: { topic: @topic, post: @post, comment: @comment } %>
+  <%= render @comments %>
 </div>

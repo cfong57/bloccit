@@ -22,7 +22,6 @@
     <% end %>
   </div>
   <div class="row span8"><h4>Many posts, now handle it</h4></div>
-  <%= render partial: "post", collection: @posts, locals: { topic: @topic, post: @post, comment: @comment } %>
+  <%= render @posts %>
   <%= will_paginate @posts %>
-
 </div>

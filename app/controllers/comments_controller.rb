@@ -2,8 +2,8 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find(params[:id])
-    @topic = Topic.find(params[:topic_id])
-    @post = Post.find(params[:post_id])
+    @post = @comment.post
+    @topic = @post.topic
     @user = current_user
   end
 
@@ -33,18 +33,20 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @topic = Topic.find(params[:topic_id])
-    @post = Post.find(params[:post_id])
-    @user = current_user
     @comment = Comment.find(params[:id])
+    @post = @comment.post
+    @topic = @post.topic
+    @user = current_user
+    
     authorize! :edit, @comment, message: "You need to own the comment to edit it."
   end
 
   def update
-    @topic = Topic.find(params[:topic_id])
-    @post = Post.find(params[:post_id])
-    @user = current_user
     @comment = Comment.find(params[:id])
+    @post = @comment.post
+    @topic = @post.topic
+    @user = current_user
+    
     authorize! :update, @comment, message: "You need to own the comment to edit it."
     if @comment.update_attributes(params[:comment])
       flash[:notice] = "Comment was updated."
@@ -56,9 +58,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @topic = Topic.find(params[:topic_id])
-    @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
+    @post = @comment.post
+    @topic = @post.topic
+    @user = current_user
     id = @comment.id
     authorize! :destroy, @comment, message: "You need to own the comment to delete it."
     if @comment.destroy
