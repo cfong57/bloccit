@@ -25,7 +25,9 @@ end
 gem 'jquery-rails'
 
 # seeding
-gem 'faker'
+# "git@github.com:/pupeno/whatever.git"
+gem 'faker', :path => "C:/Users/Alex/Desktop/bloc/code/faker"
+#:git => "git://github.com/cfong57/faker.git"
 
 # security
 gem 'devise', '~> 3.0.0'

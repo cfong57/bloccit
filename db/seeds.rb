@@ -4,9 +4,8 @@ require 'faker'
 topics = []
 25.times do
   topics << Topic.create(
-    name: Faker::Lorem.words(rand(1..10)).join(" "), 
-    description: Faker::Lorem.paragraph(rand(1..4))
-  )
+    name: Faker::Song.lyric, 
+    description: Faker::Song.paragraph)
 end
 
 #Create some users
@@ -25,18 +24,17 @@ end
     topic = topics.first # getting the first topic here
     p = u.posts.create(
       topic: topic,
-      title: Faker::Lorem.words(rand(1..10)).join(" "), 
-      body: Faker::Lorem.paragraphs(rand(1..4)).join("\n"))
+      title: Faker::Song.lyric, 
+      body: Faker::Song.paragraph)
     # set the created_at to a time within the past year
     p.update_attribute(:created_at, Time.now - rand(600..31536000))
     p.update_rank
     topics.rotate! # add this line to move the first topic to the last, so that posts get assigned to different topics.
     
     #Create some comments
-    (15 + rand(3..7)).times do
-      c = u.comments.create(body: Faker::Lorem.paragraphs(rand(1..2)).join("\n"))
+    3.times do
+      c = u.comments.create(body: Faker::Song.paragraph, post: p)
       c.update_attribute(:created_at, Time.now - rand(600..31536000))
-      c.update_attribute(:post_id, p.id)
     end
   end
 end
