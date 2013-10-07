@@ -18,6 +18,13 @@
     <% if can? :edit, @post %>
       <%= link_to "Edit", edit_topic_post_path(@topic,@post), class: 'btn btn-large btn-block' %>
     <% end %>
+    <% if can? :create, Comment %>   
+      <a href="#" class="js-show-hide btn btn-primary btn-mini" data-selector="js-new-comment">Add Comment</a>
+      <div class="js-new-comment hide">
+        <h4>New Comment</h4>
+        <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
+      </div>
+    <% end %>
     <% if can? :destroy, @post %>
       <%= link_to "Delete Post", [@topic, @post], method: :delete, class: 'btn btn-large btn-block btn-danger', 
       confirm: 'Are you sure you want to delete this post?' %>
@@ -31,11 +38,6 @@
     </div>
     <%= render partial: 'favorites/favorite', locals: { topic: @topic, post: @post } %>
   </div>
-  <div class="span4">
-    <% if can? :create, @comment %>
-      <%= link_to "Comment", new_topic_post_comment_path(@topic,@post,@comment), class: 'btn btn-large btn-block' %>
-    <% end %>
-  </div>
   <div class="row span8"><h4>Many comments, now handle it</h4></div>
-  <%= render partial: 'comments/comment', collection: @comments %>
-</div>
+    <%= render partial: 'comments/comment', collection: @comments %>
+  </div>

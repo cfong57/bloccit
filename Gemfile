@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+#trying to make Guard work properly
+require 'rbconfig'
+gem 'wdm', '>= 0.1.0' if RbConfig::CONFIG['target_os'] =~ /mswin|mingw/i
+
 gem 'rails', '3.2.14'
 
 # Bundle edge Rails instead:
@@ -21,7 +25,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'guard-rspec'
+  gem 'guard-rspec', '~> 2.5.1' #weird error with latest version
   gem 'factory_girl_rails', '~> 4.0'
   gem 'database_cleaner'
 end
