@@ -19,13 +19,6 @@
     <% if can? :edit, post %>
       <%= link_to "Edit post", edit_topic_post_path(post.topic,post), class: 'btn btn-primary btn-mini' %>
     <% end %>
-    <% if can? :create, Comment %>
-      <a href="#" class="js-show-hide btn btn-primary btn-mini" data-selector="js-new-comment">Add Comment</a>
-      <div class="js-new-comment hide">
-        <h4>New Comment</h4>
-        <%= render partial: 'comments/form', locals: { topic: post.topic, post: post, comment: post.comments.build } %>
-      </div>
-    <% end %>
   </div>
   <%= render partial: 'favorites/favorite', locals: { topic: post.topic, post: post } %>
 </div>

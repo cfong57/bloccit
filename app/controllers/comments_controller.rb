@@ -17,23 +17,24 @@ class CommentsController < ApplicationController
   end
 
   def create
-    #keep track of where people were
-    session[:return_to] ||= request.referer
-
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:post_id])
     @user = current_user
+    @comments = @post.comments
     @comment = current_user.comments.build(params[:comment])
     @comment.post = @post
     @comment.user = @user
+    @new_comment = Comment.new
+
     authorize! :create, @post, message: "You need to be signed up to do that."
     if @comment.save
-      flash[:notice] = "Comment was saved."
-      #should bring people back to wherever they called new/create from
-      redirect_to session.delete(:return_to)
+      flash[:notice] = "Comment was created."
     else
       flash[:error] = "There was an error saving the comment. Please try again."
-      render :new
+    end
+
+    respond_with(@comment) do |f|
+      f.html { redirect_to [@topic, @post] }
     end
   end
 
