@@ -16,3 +16,6 @@
 
 # Carrierwave images
 public/uploads
+
+# Environment variables
+/config/application.yml
